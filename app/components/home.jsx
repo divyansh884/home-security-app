@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity,Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
-import Page2 from '../pages/Page2';
-import Page3 from '../pages/Page3';
-import Page4 from '../pages/Page4';
-import Page5 from '../pages/Page5';
-
-// HomeScreen with TouchableOpacity buttons for each box
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Profile from '../pages/Profile';
+import Logs from '../pages/Logs';
+import Notification from '../pages/Notification';
+import LiveFeed from '../pages/LIveFeed';
 const HomeScreen = ({ navigation }) => {
-  const [isOn, setIsOn] = useState(false); // State for ON/OFF toggle
+  const [isOn, setIsOn] = useState(false); 
 
-  // Toggle function
   const toggleSwitch = () => {
     setIsOn((prev) => !prev);
   };
@@ -31,41 +29,43 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Grid with Other Boxes */}
       <View style={styles.gridContainer}>
+
         <TouchableOpacity
           style={styles.box}
           onPress={() => {
-            console.log("Box 2 Pressed"); // Debugging log
-            navigation.navigate('Page2');
+            navigation.navigate('Live Feed');
           }}
         >
-          <Text style={styles.boxText}>Box 2</Text>
+          <Icon name="video-camera" size={30} color="#000" />
+          <Text style={styles.boxText}>Live Feed</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.box}
           onPress={() => {
-            console.log("Box 3 Pressed"); // Debugging log
-            navigation.navigate('Page3');
+            navigation.navigate('Profile');
           }}
         >
-          <Text style={styles.boxText}>Box 3</Text>
+          <Icon name="user" size={30} color="#000" />
+          <Text style={styles.boxText}>Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.box}
           onPress={() => {
-            console.log("Box 4 Pressed"); // Debugging log
-            navigation.navigate('Page4');
+            navigation.navigate('Logs');
           }}
         >
-          <Text style={styles.boxText}>Box 4</Text>
+          <Icon name="file-text" size={30} color="#000" />
+          <Text style={styles.boxText}>Logs</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.box}
           onPress={() => {
             console.log("Box 5 Pressed"); // Debugging log
-            navigation.navigate('Page5');
+            navigation.navigate('Notification');
           }}
         >
-          <Text style={styles.boxText}>Box 5</Text>
+           <Icon name="bell" size={30} color="#000" />
+          <Text style={styles.boxText}>Notification</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -76,10 +76,10 @@ const Home = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Page2" component={Page2} />
-      <Stack.Screen name="Page3" component={Page3} />
-      <Stack.Screen name="Page4" component={Page4} />
-      <Stack.Screen name="Page5" component={Page5} />
+      <Stack.Screen name="Live Feed" component={LiveFeed} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Logs" component={Logs} />
+      <Stack.Screen name="Notification" component={Notification} />
     </Stack.Navigator>
   );
 };
@@ -88,41 +88,50 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f8f9fa',
   },
   mainBox: {
     flex: 1,
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#fff',
     alignItems: 'center',
+    borderRadius: 10,
+    elevation: 3,
+    margin:15,
     justifyContent: 'center',
   },
   gridContainer: {
     flex: 2,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    backgroundColor:'#f8f9fa',
+    alignItems:'center',
+    justifyContent:'center',
   },
   box: {
-    width: '50%',
-    height: '50%',
-    backgroundColor: '#2196F3',
+    width: '45%',
+    height: '45%',
+    backgroundColor: '#fff',
     alignItems: 'center',
+    borderRadius:10,
     justifyContent: 'center',
     borderWidth: 1,
+    elevation:3,
+    bound:'white',
+    margin:5,
     borderColor: '#fff',
   },
   boxText: {
-    color: '#fff',
+    color: 'black',
     fontSize: 18,
+
   },
   toggleButton: {
     marginTop: 10,
-    // paddingVertical: 50,
-    // paddingHorizontal: 50,
     alignItems:'center',
     justifyContent:'center',
     borderRadius: 99,
-    height: 130,
-    width:130
+    height: 120,
+    width:120
   },
   onButton: {
     backgroundColor: 'blue',
@@ -132,7 +141,7 @@ const styles = StyleSheet.create({
   },
   toggleButtonText: {
     color: '#fff',
-    fontSize: 35,
+    fontSize: 20,
     fontWeight: 'bold',
   },
 });

@@ -50,7 +50,7 @@ const cameraData = {
   ]
 };
 
-const Page5 = () => {
+const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Page5;
+export default Notifications;
 
 
 

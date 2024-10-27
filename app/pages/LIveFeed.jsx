@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
-// Sample JSON data
 const cameraData = [
   {
     cameraID: "CAM01",
@@ -45,7 +44,7 @@ const cameraData = [
   }
 ];
 
-const Page2 = () => {
+const LiveFeed = () => {
   // Render each recording as a grid item
   const renderRecording = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => alert(`Play video from ${item.location}`)}>
@@ -107,4 +106,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Page2;
+export default LiveFeed;

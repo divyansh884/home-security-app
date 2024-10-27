@@ -45,7 +45,7 @@ const cameraData = {
   ]
 };
 
-const Page4 = () => {
+const Logs = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [filteredDetections, setFilteredDetections] = useState([]);
   const [showCalendar, setShowCalendar] = useState(true);
@@ -158,5 +158,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Page4;
+export default Logs;
 
